@@ -13,7 +13,7 @@
 
 👤 **v6.dooring**
 
-* Website: v6.dooring.cn
+* Website: http://175.27.130.220:3001/beta
 
 ## Show your support
 
