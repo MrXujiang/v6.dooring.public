@@ -1,4 +1,4 @@
-<img src="./logo.svg" alt="v6.dooring可视化大屏解决方案" />
+<img src="http://175.27.130.220:3001/beta/static/logo.fe14730b.svg" alt="v6.dooring可视化大屏解决方案" />
 <h1 align="center">Welcome to v6.dooring 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
