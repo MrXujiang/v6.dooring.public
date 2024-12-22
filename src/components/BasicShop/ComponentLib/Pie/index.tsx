@@ -2,17 +2,15 @@ import React, { memo, useEffect } from 'react'
 import { Chart } from '@antv/g2'
 
 import { colors } from '@/components/BasicShop/common'
-import { PieChart } from '@/utils/icon/Icons'
 
 import { PieConfigType } from './schema'
 
 interface PieComponentProps extends PieConfigType {
-  isTpl: boolean
   id: string
 }
 
 const PieComponent: React.FC<PieComponentProps> = ({
-  isTpl, id, data, width, height,
+  id, data, width, height,
   toggle, legendPosition, legendLayout, legendShape,
   radius, shape, labelColor, axisColor, multiColor,
   tipEvent,
@@ -25,7 +23,6 @@ const PieComponent: React.FC<PieComponentProps> = ({
 }) => {
   useEffect(() => {
     let timer:any = null;
-    if (!isTpl) {
       const chart = new Chart({
         container: `pie-${id}`,
         autoFit: true,
@@ -120,14 +117,11 @@ const PieComponent: React.FC<PieComponentProps> = ({
       chart.interaction('element-active')
 
       chart.render()
-    }
     return () => {
       clearInterval(timer)
     }
   }, [])
-  return isTpl
-    ? <PieChart />
-    : <div id={`pie-${id}`} />
+  return <div id={`pie-${id}`} />
 }
 
 export default memo(PieComponent)

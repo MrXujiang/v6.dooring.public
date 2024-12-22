@@ -7,12 +7,11 @@ import { PieChart } from '@/utils/icon/Icons'
 import { CowEyeConfigType } from './schema'
 
 interface CowEyeComponentProps extends CowEyeConfigType {
-  isTpl: boolean
   id: string
 }
 
 const CowEyeComponent: React.FC<CowEyeComponentProps> = ({
-  isTpl, id, data, width, height,
+  id, data, width, height,
   toggle, legendPosition, legendLayout, legendShape,
   radius, lineWidth, lineLength, textOffset, textColor, multiColor,
   tipEvent,
@@ -25,7 +24,6 @@ const CowEyeComponent: React.FC<CowEyeComponentProps> = ({
 }) => {
   useEffect(() => {
     let timer:any = null;
-    if (!isTpl) {
       const chart = new Chart({
         container: `cowEye-${id}`,
         autoFit: true,
@@ -201,16 +199,13 @@ const CowEyeComponent: React.FC<CowEyeComponentProps> = ({
       })
 
       chart.render()
-    }
 
     return () => {
       clearInterval(timer)
     }
   }, [])
 
-  return isTpl
-    ? <PieChart />
-    : <div id={`cowEye-${id}`} />
+  return <div id={`cowEye-${id}`} />
 }
 
 export default memo(CowEyeComponent)

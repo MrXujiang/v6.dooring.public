@@ -1,0 +1,68 @@
+@import '~less/variables';
+
+// Header
+.header {
+  position: fixed;
+  left: @sider-width;
+  width: calc(100% - @sider-width);
+  min-width: @content-width + 20px;
+  height: @header-height;
+  line-height: @header-height;
+  background: #141414;
+  padding-left: 0;
+  padding-right: 30px;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  z-index: 100;
+}
+
+// RightContent
+.rightContent {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  .searchInput {
+    width: 200px;
+    margin-right: 40px;
+    background-color: #24282E;
+    border: none;
+    color: #fff;
+    box-shadow: none;
+    input {
+      background-color: #24282E;
+      color: #fff;
+    }
+  }
+  .searchIcon {
+    color: #fff;
+    font-size: 20px;
+  }
+  a {
+    margin-right: 24px;
+    color: #fff;
+    font-size: 14px;
+  }
+}
+
+.overlay {
+  position: fixed;
+  // opacity: 1 !important;
+  // top: @header-height + 2px !important;
+}
+
+.currentUser {
+  cursor: pointer;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  transform: translateY(-2px);
+}
+
+.lang {
+  margin-right: 5px;
+}

@@ -1,0 +1,94 @@
+@import '~less/variables';
+@import '~less/mixins';
+
+.wrapper {
+  position: relative;
+
+  // .leftLine {
+  //   position: absolute;
+  //   top: 0px;
+  //   width: 10000px;
+  //   height: 0;
+  //   border-top: 1px dashed #0099ff;
+  //   transform: translateX(-100%);
+  // }
+  // .topLine {
+  //   position: absolute;
+  //   border-left: 1px dashed #09f;
+  //   width: 0;
+  //   height: 10000px;
+  //   left: 0px;
+  //   transform: translateY(-100%);
+  // }
+  // .labelx {
+  //   position: absolute;
+  //   top: -5px;
+  //   left: -25px;
+  //   transform: translate(-100%,-100%);
+  //   color: #09f;
+  //   font-size: 18px;
+  //   white-space: nowrap;
+  // }
+  // .labely {
+  //   position: absolute;
+  //   top: -25px;
+  //   left: 0;
+  //   transform: translate(-100%,-100%) rotate(90deg);
+  //   color: #09f;
+  //   font-size: 18px;
+  //   white-space: nowrap;
+  // }
+
+  .moveItem {
+    position: absolute;
+    display: inline-block;
+    border: 1px dashed transparent;
+    cursor: move;
+    canvas {
+      cursor: move !important;
+    }
+  }
+  
+  .moveItem.isDragging {
+    opacity: 0.6;
+  }
+  
+  .moveItem:hover {
+    background-color: rgba(115, 170, 229, 0.5);
+    border: 1px dashed @primary;
+  }
+}
+
+.attr {
+  display: flex;
+  height: @editor-height;
+  color: @white;
+  background-color: @bg;
+  margin-bottom: 6px;
+  div {
+    flex: 1;
+    line-height: @editor-height;
+    text-align: center;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+    &:hover {
+      color: @white;
+    }
+  }
+  .active {
+    color: @white;
+    background-color: @bg-light;
+    border-top: 1px solid @primary;
+  }
+}
+
+.formScroll {
+  height: calc(100vh - @editor-height * 2);
+  overflow-y: scroll;
+  .scrollbar();
+  .radio {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+  }
+}

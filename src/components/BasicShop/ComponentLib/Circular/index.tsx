@@ -2,17 +2,15 @@ import React, { memo, useEffect, useMemo } from 'react'
 import { Chart } from '@antv/g2'
 
 import { colors } from '@/components/BasicShop/common'
-import { CircularChart } from '@/utils/icon/Icons'
 
 import { CircularConfigType } from './schema'
 
 interface CircularComponentProps extends CircularConfigType {
-  isTpl: boolean
   id: string
 }
 
 const CircularComponent: React.FC<CircularComponentProps> = ({
-  isTpl, id, data, width, height,
+  id, data, width, height,
   toggle, legendPosition, legendLayout, legendShape,
   text, fontSize, unit, radius, innerRadius, labelColor, axisColor, textColor, multiColor,
   tipEvent,
@@ -30,7 +28,6 @@ const CircularComponent: React.FC<CircularComponentProps> = ({
 
   useEffect(() => {
     let timer:any = null;
-    if (!isTpl) {
       const chart = new Chart({
         container: `circular-${id}`,
         autoFit: true,
@@ -147,14 +144,11 @@ const CircularComponent: React.FC<CircularComponentProps> = ({
       chart.interaction('element-active')
 
       chart.render()
-    }
     return () => {
       clearInterval(timer)
     }
   }, [])
-  return isTpl
-    ? <CircularChart />
-    : <div id={`circular-${id}`} />
+  return <div id={`circular-${id}`} />
 }
 
 export default memo(CircularComponent)

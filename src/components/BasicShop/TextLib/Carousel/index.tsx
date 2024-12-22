@@ -1,28 +1,13 @@
 import React, { memo } from 'react'
 
-import FormattedMsg from '@/components/FormattedMsg'
-
 import { CarouselConfig } from './schema'
-import styles from '../index.less'
+import styles from './index.less'
 
-interface CarouselConfigType extends CarouselConfig {
-  isTpl: boolean
-}
-
-const Carousel: React.FC<CarouselConfigType> = memo(({
-  textAlign, text, fontSize, color, width, height, isTpl,
+const Carousel: React.FC<CarouselConfig> = memo(({
+  textAlign, text, fontSize, color, width, height,
   toggle, rollingSpeed, animation,
 }) => {
-  return (
-    <>
-      {isTpl
-        ? (
-          <span className={styles.text}>
-            <FormattedMsg id="Carousel" />
-          </span>
-        )
-        : (
-          <div
+  return <div
             style={{
               textAlign,
               width,
@@ -43,8 +28,5 @@ const Carousel: React.FC<CarouselConfigType> = memo(({
               {text}
             </a>
           </div>
-        )}
-    </>
-  )
 })
 export default Carousel

@@ -2,17 +2,14 @@ import React, { memo, useEffect } from 'react'
 import DataSet from '@antv/data-set'
 import { Chart } from '@antv/g2'
 
-import { PopIcon } from '@/utils/icon/Icons'
-
 import { HexagonalMapConfigType } from './schema'
 
 interface HexagonalMapComponentProps extends HexagonalMapConfigType {
-  isTpl: boolean
   id: string
 }
 
 const HexagonalMapComponent: React.FC<HexagonalMapComponentProps> = ({
-  isTpl, id, width, height,
+  id, width, height,
 }) => {
   const addPoint = (collection: any[], point: any, count = 1) => {
     for (let i = 0; i < count; i++) {
@@ -33,7 +30,6 @@ const HexagonalMapComponent: React.FC<HexagonalMapComponentProps> = ({
   }
 
   useEffect(() => {
-    if (!isTpl) {
       fetch('https://gw.alipayobjects.com/os/antvdemo/assets/data/china-provinces.geo.json')
         .then(res => res.json())
         .then(GeoJSON => {
@@ -102,12 +98,9 @@ const HexagonalMapComponent: React.FC<HexagonalMapComponentProps> = ({
             })
           chart.render()
         })
-    }
   }, [])
 
-  return isTpl
-    ? <PopIcon />
-    : <div id={`hexagonalMap-${id}`} />
+  return <div id={`hexagonalMap-${id}`} />
 }
 
 export default memo(HexagonalMapComponent)

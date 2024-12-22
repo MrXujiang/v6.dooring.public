@@ -1,0 +1,33 @@
+@import '~less/variables';
+
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .text {
+    margin-right: 10px;
+    color: @white;
+  }
+
+  .color {
+    width: 20px;
+    height: 20px;
+    border-radius: @border-radius;
+    cursor: pointer;
+  }
+}
+
+.modal {
+  position: absolute;
+  z-index: 2000;
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}

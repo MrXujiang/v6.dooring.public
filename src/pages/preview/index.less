@@ -1,0 +1,42 @@
+@import '~less/variables';
+@import '~less/mixins';
+
+.tickMark {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: scroll;
+  background: @bg;
+  .scrollbar();
+  // 标尺
+  .cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    background-color: @bg;
+    z-index: 3;
+  }
+  .tickMarkTop {
+    position: fixed;
+    top: 0;
+    height: 20px;
+    z-index: 2;
+  }
+  .tickMarkLeft {
+    position: fixed;
+    left: 0;
+    width: 20px;
+    z-index: 2;
+  }
+  .canvas {
+    position: relative;
+    left: 50px;
+    top: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}

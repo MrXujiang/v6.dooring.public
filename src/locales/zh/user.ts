@@ -1,0 +1,16 @@
+export default {
+  Username: '用户名',
+  'Please input your email': '请输入您的邮箱',
+  Password: '密码',
+  'Please enter your password': '请输入您的8位密码',
+  'Password must be 8 digits': '密码必须是8位',
+  'Please enter the password again': '请再次输入密码',
+  'The two passwords are inconsistent': '两次密码不一致',
+  Login: '登录',
+  Registered: '注册',
+  'No Account': '没有账号?',
+  'Already have an account': '已有账号?',
+  'Sign up now': '立即注册',
+  'Sign in now': '立即登录',
+  'Please enter verification code': '请输入验证码',
+}

@@ -1,17 +1,14 @@
 import React, { memo, useEffect } from 'react'
 import { Chart } from '@antv/g2'
 
-import { LineChart } from '@/utils/icon/Icons'
-
 import { LineConfigType } from './schema'
 
 interface LineComponentProps extends LineConfigType {
-  isTpl: boolean
   id: string
 }
 
 const LineComponent: React.FC<LineComponentProps> = ({
-  isTpl, id, data, width, height,
+  id, data, width, height,
   toggle, legendPosition, legendLayout,
   labelColor, axisColor, lineColor, grid, lineWidth, dotWidth, dotColor,
   tipEvent,
@@ -24,7 +21,6 @@ const LineComponent: React.FC<LineComponentProps> = ({
 }) => {
   useEffect(() => {
     let timer:any = null;
-    if (!isTpl) {
       const chart = new Chart({
         container: `line-${id}`,
         autoFit: true,
@@ -102,15 +98,12 @@ const LineComponent: React.FC<LineComponentProps> = ({
       chart.line().position('name*value').color('value', lineColor).size(lineWidth)
       chart.point().position('name*value').color('value', dotColor).size(dotWidth)
       chart.render()
-    }
     return () => {
       clearInterval(timer)
     }
-  }, [data, isTpl])
+  }, [data])
 
-  return isTpl
-    ? <LineChart />
-    : <div id={`line-${id}`} />
+  return <div id={`line-${id}`} />
 }
 
 export default memo(LineComponent)

@@ -1,22 +1,17 @@
 import React, { memo, useEffect } from 'react'
 import DataSet from '@antv/data-set'
 import { Chart } from '@antv/g2'
-
-import { PopIcon } from '@/utils/icon/Icons'
-
 import { BubbleMapConfigType } from './schema'
 
 interface BubbleMapComponentProps extends BubbleMapConfigType {
-  isTpl: boolean
   id: string
 }
 
 const BubbleMapComponent: React.FC<BubbleMapComponentProps> = ({
-  isTpl, id, width, height,
+  id, width, height,
   background, stroke, bubbleColor, lineWidth, bgOpacity, bubbleOpacity,
 }) => {
   useEffect(() => {
-    if (!isTpl) {
       fetch('https://gw.alipayobjects.com/os/antvdemo/assets/data/world.geo.json')
         .then(res => res.json())
         .then(mapData => {
@@ -103,12 +98,9 @@ const BubbleMapComponent: React.FC<BubbleMapComponentProps> = ({
               chart.render()
             })
         })
-    }
   }, [])
 
-  return isTpl
-    ? <PopIcon />
-    : <div id={`bubbleMap-${id}`} />
+  return <div id={`bubbleMap-${id}`} />
 }
 
 export default memo(BubbleMapComponent)

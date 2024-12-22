@@ -1,17 +1,14 @@
 import React, { memo, useEffect } from 'react'
 import { Chart, registerShape } from '@antv/g2'
 
-import { DashboardIcon } from '@/utils/icon/Icons'
-
 import { DashboardConfigType } from './schema'
 
 interface DashboardComponentProps extends DashboardConfigType {
-  isTpl: boolean
   id: string
 }
 
 const DashboardComponent: React.FC<DashboardComponentProps> = ({
-  isTpl, id, data, width, height,
+  id, data, width, height,
   text, color, fontSize, graphicsColor, cylinderWidth, backgroundColor,
   tipEvent,
   titleEvent,
@@ -23,7 +20,6 @@ const DashboardComponent: React.FC<DashboardComponentProps> = ({
 }) => {
   useEffect(() => {
     let timer:any = null;
-    if (!isTpl) {
       // 自定义Shape 部分
       registerShape('point', 'pointer', {
         draw(cfg, container) {
@@ -184,15 +180,12 @@ const DashboardComponent: React.FC<DashboardComponentProps> = ({
       })
 
       chart.render()
-    }
     return () => {
       clearInterval(timer)
     }
   }, [])
 
-  return isTpl
-    ? <DashboardIcon />
-    : <div id={`dashboard-${id}`} />
+  return <div id={`dashboard-${id}`} />
 }
 
 export default memo(DashboardComponent)

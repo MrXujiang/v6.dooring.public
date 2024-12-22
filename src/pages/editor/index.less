@@ -1,0 +1,194 @@
+@import '~less/variables';
+@import '~less/mixins';
+
+.layout {
+  min-width: @content-width;
+  height: 100%;
+  div {
+    .scrollbar();
+  }
+  .editorWrap {
+    height: 100%;
+  }
+  .container {
+    display: flex;
+    height: calc(100% - @editor-height);
+    .left {
+      display: flex;
+      z-index: 3;
+      .libs {
+        width: @editor-height;
+        background-color: @bg;
+        div {
+          height: @editor-height;
+          line-height: @editor-height;
+          text-align: center;
+          cursor: pointer;
+          &:hover {
+            background-color: @bg-light;
+            path {
+              fill: @primary;
+            }
+          }
+        }
+        .active {
+          background-color: @bg-light;
+          path {
+            fill: @primary;
+          }
+        }
+      }
+      // Sider
+      .components{
+        width: 160px;
+        padding: 11px 8px;
+        height: calc(100vh - @editor-height);
+        overflow-y: scroll;
+        .scrollbar(@width: 0px);
+        background-color: @bg-light;
+        .module {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 144px;
+          margin-bottom: 8px;
+          font-size: @size-small;
+          color: @white;
+          cursor: move;
+          .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            .header {
+              width: 100%;
+              height: 20px;
+              line-height: 20px;
+              text-align: center;
+              background-color: @bg;
+            }
+            .content {
+              width: 100%;
+              height: 80px;
+              background-color: #1D1E1F;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+        }
+        .half {
+          display: inline-block;
+          width: 68px;
+          .container {
+            .content {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 68px;
+            }
+          }
+          &:nth-child(2n + 1) {
+            margin-right: 8px;
+          }
+        }
+        .decoration {
+          :global(.ant-collapse-item > .ant-collapse-header) {
+            height: 16px;
+            padding: 0;
+            font-size: 12px;
+            margin-top: 8px;
+            :global(.ant-collapse-arrow) {
+              right: 0;
+              padding: 0;
+              top: 2px;
+            }
+          }
+          :global(.ant-collapse-content > .ant-collapse-content-box) {
+            padding: 0;
+            padding-top: 8px;
+          }
+        }
+      }
+      // template
+      .text {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        border: 1px solid @primary;
+      }
+    }
+    .tickMark {
+      position: relative;
+      flex: 1;
+      height: calc(100vh - @editor-height);
+      overflow: scroll;
+      background: @bg;
+      // 标尺
+      .cover {
+        position: fixed;
+        top: @editor-height;
+        left: 200px;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        background-color: @bg;
+        z-index: 3;
+      }
+      .tickMarkTop {
+        position: fixed;
+        top: @editor-height;
+        height: 20px;
+        z-index: 2;
+      }
+      .tickMarkLeft {
+        position: fixed;
+        left: 200px;
+        width: 20px;
+        z-index: 2;
+      }
+      .canvasBox {
+        position: relative;
+        left: 50px;
+        top: 50px;
+        .canvas {
+          position: relative;
+          left: 0;
+          top: 0;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+    .transition {
+      transition: all ease-in-out @trans-speed;
+    }
+    .attrSetting {
+      position: fixed;
+      right: 0;
+      width: 340px;
+      background: @bg-light;
+      z-index: 3;
+    }
+    .rightcolla {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      width: 20px;
+      height: 80px;
+      transform: translate(0, -50%);
+      background: @bg-light;
+      box-shadow: -2px 0px 4px 0px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      &:hover {
+        color: @primary;
+      }
+    }
+  }
+}

@@ -1,44 +1,24 @@
 import React, { memo } from 'react'
 import { Image } from 'antd'
 
-import { imgLoadFail } from '@/utils'
-
 import { PictureConfig } from './schema'
 
 interface PictureConfigType extends PictureConfig {
-  isTpl: boolean
   imgname: string
 }
 
 const Decoration: React.FC<PictureConfigType> = memo(({
-  width, height, isTpl, opacity, imgname,
+  width, height, opacity, imgname,
 }) => {
   const src = require(`@/assets/${imgname}`)
 
-  return (
-    <>
-      {isTpl
-        ? <Image
+  return <Image
           style={{ opacity }}
           preview={false}
-          width={124}
-          height={50}
+          width={width}
+          height={height}
           src={src}
           alt="image"
-          fallback={imgLoadFail}
         />
-        : (
-          <Image
-            style={{ opacity }}
-            preview={false}
-            width={width}
-            height={height}
-            src={src}
-            alt="image"
-            fallback={imgLoadFail}
-          />
-        )}
-    </>
-  )
 })
 export default Decoration

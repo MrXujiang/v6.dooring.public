@@ -1,16 +1,9 @@
 import React, { memo, useState, useEffect } from 'react'
 
-import FormattedMsg from '@/components/FormattedMsg'
-
 import { TextConfig } from './schema'
-import styles from '../index.less'
 
-interface TextConfigType extends TextConfig {
-  isTpl: boolean
-}
-
-const Text: React.FC<TextConfigType> = memo(({
-  isTpl, width, height, fontSize, fontWeight,
+const Text: React.FC<TextConfig> = memo(({
+  width, height, fontSize, fontWeight,
   backgroundColor, timeColor, dateColor, flexDirection, justifyContent,
   alignItems, opacity, display,
 }) => {
@@ -48,34 +41,22 @@ const Text: React.FC<TextConfigType> = memo(({
     setInterval(getTime, 1000)
   }, [])
 
-  return (
-    <>
-      {isTpl
-        ? (
-          <span className={styles.text}>
-            <FormattedMsg id="Time box" />
-          </span>
-        )
-        : (
-          <div
-            style={{
-              fontSize,
-              fontWeight,
-              width,
-              height,
-              opacity,
-              backgroundColor,
-              display: 'flex',
-              justifyContent,
-              alignItems,
-              flexDirection,
-            }}
-          >
-            { showDate && <span style={{ color: dateColor }}>{showDate}</span>}
-            { showTime && <span style={{ color: timeColor }}>{showTime}</span>}
-          </div>
-        )}
-    </>
-  )
+  return <div
+    style={{
+      fontSize,
+      fontWeight,
+      width,
+      height,
+      opacity,
+      backgroundColor,
+      display: 'flex',
+      justifyContent,
+      alignItems,
+      flexDirection,
+    }}
+  >
+    { showDate && <span style={{ color: dateColor }}>{showDate}</span>}
+    { showTime && <span style={{ color: timeColor }}>{showTime}</span>}
+  </div>
 })
 export default Text

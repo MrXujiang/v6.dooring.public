@@ -2,24 +2,20 @@ import React, { memo, useEffect } from 'react'
 import DataSet from '@antv/data-set'
 import { Chart } from '@antv/g2'
 
-import { RadarChart } from '@/utils/icon/Icons'
-
 import { RadarConfigType } from './schema'
 
 const { DataView } = DataSet
 
 interface RadarComponentProps extends RadarConfigType {
-  isTpl: boolean
   id: string
 }
 
 const RadarComponent: React.FC<RadarComponentProps> = ({
-  isTpl, id, data, width, height,
+  id, data, width, height,
   toggle, legendPosition, legendLayout, legendShape,
   radius, coordinate, lineWidth, lineColor, dotWidth, dotColor, graphicsColor, labelColor,
 }) => {
   useEffect(() => {
-    if (!isTpl) {
       const dataX = data.map(item => ({ ...item, value: Number(item.value) }))
 
       const dv = new DataView().source(dataX)
@@ -121,12 +117,9 @@ const RadarComponent: React.FC<RadarComponentProps> = ({
       chart.interaction('element-active')
 
       chart.render()
-    }
   }, [])
 
-  return isTpl
-    ? <RadarChart />
-    : <div id={`radar-${id}`} />
+  return <div id={`radar-${id}`} />
 }
 
 export default memo(RadarComponent)

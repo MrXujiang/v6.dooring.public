@@ -2,12 +2,10 @@ import React, { memo, useEffect } from 'react'
 import { Chart } from '@antv/g2'
 
 import { colors } from '@/components/BasicShop/common'
-import { FunnelIcon } from '@/utils/icon/Icons'
 
 import { FunnelConfigType } from './schema'
 
 interface FunnelComponentProps extends FunnelConfigType {
-  isTpl: boolean
   id: string
 }
 
@@ -25,7 +23,6 @@ const FunnelComponent: React.FC<FunnelComponentProps> = ({
 }) => {
   useEffect(() => {
     let timer:any = null;
-    if (!isTpl) {
       const chart = new Chart({
         container: `funnel-${id}`,
         autoFit: true,
@@ -94,16 +91,13 @@ const FunnelComponent: React.FC<FunnelComponentProps> = ({
       chart.interaction('element-active')
 
       chart.render()
-    }
 
     return () => {
       clearInterval(timer)
     }
   }, [])
 
-  return isTpl
-    ? <FunnelIcon />
-    : <div id={`funnel-${id}`} />
+  return <div id={`funnel-${id}`} />
 }
 
 export default memo(FunnelComponent)

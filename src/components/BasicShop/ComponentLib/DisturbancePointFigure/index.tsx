@@ -1,18 +1,15 @@
 import React, { memo, useEffect } from 'react'
 import { Chart } from '@antv/g2'
-
-import { DotIcon } from '@/utils/icon/Icons'
 import { fetchMapData } from '@/utils/req'
 
 import { DisturbancePointFigureConfigType } from './schema'
 
 interface DisturbancePointFigureComponentProps extends DisturbancePointFigureConfigType {
-  isTpl: boolean
   id: string
 }
 
 const DisturbancePointFigureComponent: React.FC<DisturbancePointFigureComponentProps> = ({
-  isTpl, id, width, height,
+  id, width, height,
   toggle, legendPosition, legendLayout, legendShape,
   dataType, data, apiAddress, apiMethod, grid,
   tipEvent,
@@ -83,14 +80,10 @@ const DisturbancePointFigureComponent: React.FC<DisturbancePointFigureComponentP
   }
 
   useEffect(() => {
-    if (!isTpl) {
-      fetchMapData(dataType, data, apiMethod, apiAddress, renderCharts)
-    }
+    fetchMapData(dataType, data, apiMethod, apiAddress, renderCharts)
   }, [])
 
-  return isTpl
-    ? <DotIcon />
-    : <div id={`disturbancePointFigure-${id}`} />
+  return <div id={`disturbancePointFigure-${id}`} />
 }
 
 export default memo(DisturbancePointFigureComponent)

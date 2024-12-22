@@ -1,0 +1,25 @@
+@import '~less/variables';
+
+.sider {
+  position: fixed;
+  min-height: 100vh;
+  z-index: 100;
+  background-color: #24282E;
+  :global(.ant-menu.ant-menu-dark){
+    background-color: #24282E;
+  }
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+}
+
+.title {
+  margin-left: 10px;
+  font-size: @size-medium;
+  font-weight: @font-bold;
+  color: @white;
+}

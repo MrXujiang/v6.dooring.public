@@ -1,16 +1,13 @@
 import React, { memo, useEffect } from 'react'
 import { Chart } from '@antv/g2'
-
-import { AreaChart } from '@/utils/icon/Icons'
 import { AreaConfigType } from './schema'
 
 interface AreaComponentProps extends AreaConfigType {
-  isTpl: boolean
   id: string
 }
 
 const AreaComponent: React.FC<AreaComponentProps> = ({
-  isTpl, id, data, width, height,
+  id, data, width, height,
   toggle, legendPosition, legendLayout,
   labelColor, axisColor, lineColor, grid, lineWidth, areaColor,
   tipEvent,
@@ -23,7 +20,6 @@ const AreaComponent: React.FC<AreaComponentProps> = ({
 }) => {
   useEffect(() => {
     let timer:any = null;
-    if (!isTpl) {
       const chart = new Chart({
         container: `area-${id}`,
         autoFit: true,
@@ -98,19 +94,16 @@ const AreaComponent: React.FC<AreaComponentProps> = ({
           grid: null,
         })
 
-      chart.line().position('name*value').color('value', lineColor).size(lineWidth)
+      chart.line().position('name*value').color('value', lineColor).size(lineWidth || 0)
       chart.area().position('name*value').color('value', areaColor)
       chart.render()
-    }
 
     return () => {
       clearInterval(timer)
     }
   }, [])
 
-  return isTpl
-    ? <AreaChart />
-    : <div id={`area-${id}`} />
+  return <div id={`area-${id}`} />
 }
 
 export default memo(AreaComponent)

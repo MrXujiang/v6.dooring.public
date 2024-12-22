@@ -72,7 +72,7 @@ const Area: AreaSchema = {
           key: 'lineWidth',
           name: 'Line width',
           type: 'Number',
-          range: [1, Infinity],
+          range: [0, Infinity],
           step: 1,
           belong: 'config',
         },

@@ -1,0 +1,34 @@
+@import '~less/variables';
+@import '~less/mixins';
+
+.notFoundWrapper {
+  min-width: @content-width - 60px;
+  height: 100%;
+  padding-top: 50px;
+  text-align: center;
+
+  img {
+    height: 200px;
+    user-select: none;
+  }
+
+  & > div {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 20px;
+
+    & > span {
+      opacity: 0.4;
+      font-size: 110px;
+      line-height: 168px;
+      color: #abb4be;
+      user-select: none;
+
+      & + p {
+        text-shadow: 0 4px 8px rgba(36, 46, 66, 0.1);
+        .TypographyTitleH4(#242e42);
+        text-align: left;
+      }
+    }
+  }
+}

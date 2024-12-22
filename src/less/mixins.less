@@ -1,0 +1,146 @@
+@import 'variables';
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
+}
+
+.block-ellipsis(@line: 2) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+}
+
+.nowrap {
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.break-all {
+  word-break: break-all;
+  white-space: normal;
+}
+
+.break-word {
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.vertical-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.TypographyTitle(@fontWeight: @font-bold) {
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  font-weight: @fontWeight;
+}
+
+.TypographyTitleH1(@color: @black) {
+  font-size: 40px;
+  line-height: 1.4;
+  .TypographyTitle();
+  color: @color;
+}
+
+.TypographyTitleH2(@color: @black) {
+  font-size: 32px;
+  line-height: 1.38;
+  .TypographyTitle();
+  color: @color;
+}
+
+.TypographyTitleH3(@color: @black) {
+  font-size: @size-mid-large;
+  line-height: 1.33;
+  .TypographyTitle();
+  color: @color;
+}
+
+.TypographyTitleH4(@color: @black) {
+  font-size: @size-tiny-large;
+  line-height: 1.4;
+  .TypographyTitle();
+  color: @color;
+}
+
+.TypographyTitleH5(@color: @black) {
+  font-size: @size-normal;
+  line-height: 1.43;
+  .TypographyTitle(bold);
+  color: @color;
+}
+
+.TypographyTitleH6(@color: @black) {
+  font-size: @size-small;
+  line-height: 1.67;
+  .TypographyTitle(bold);
+  color: @color;
+}
+
+.TypographySymbolText(@color: @black) {
+  font-size: @size-small;
+  font-weight: @font-bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.67;
+  letter-spacing: normal;
+  color: @color;
+}
+
+.TypographyParagraphCode(@color: #363e4a) {
+  font-size: @size-small;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2;
+  letter-spacing: normal;
+  color: @color;
+}
+
+.TypographyParagraph(@color: @black) {
+  font-size: @size-small;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.67;
+  letter-spacing: normal;
+  color: @color;
+}
+
+.scrollbar(@width: 5px, @trackBg: transparent, @thumbBg: rgba(144,146,152,.3), @thumbHoverBg: rgba(144,146,152,.4)) {
+  &::-webkit-scrollbar {
+    width: @width;
+    height: @width;
+  }
+  &::-webkit-scrollbar-track {
+    background: @trackBg;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: @thumbBg;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: @thumbHoverBg;
+  }
+}

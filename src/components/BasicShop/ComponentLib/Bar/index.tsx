@@ -1,18 +1,16 @@
 import React, { memo, useEffect } from 'react'
 import { Chart } from '@antv/g2'
 import { colors } from '@/components/BasicShop/common'
-import { Bar } from '@/utils/icon/Icons'
 // import req from '@/utils/req'
 
 import { BarConfigType } from './schema'
 
 interface BarComponentProps extends BarConfigType {
-  isTpl: boolean
   id: string
 }
 
 const BarComponent: React.FC<BarComponentProps> = ({
-  isTpl, id, data, width, height,
+  id, data, width, height,
   toggle, legendPosition, legendLayout, legendShape,
   labelColor, axisColor, multiColor,
   tipEvent,
@@ -25,7 +23,6 @@ const BarComponent: React.FC<BarComponentProps> = ({
 }) => {
   useEffect(() => {
     let timer:any = null;
-    if (!isTpl) {
       const chart = new Chart({
         container: `bar-${id}`,
         autoFit: true,
@@ -102,16 +99,13 @@ const BarComponent: React.FC<BarComponentProps> = ({
       chart.interaction('element-active')
 
       chart.render()
-    }
 
     return () => {
       clearInterval(timer)
     }
   }, [])
 
-  return isTpl
-    ? <Bar />
-    : <div id={`bar-${id}`} />
+  return <div id={`bar-${id}`} />
 }
 
 export default memo(BarComponent)

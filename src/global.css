@@ -1,0 +1,104 @@
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  margin: 0;
+}
+/* Table */
+.ant-table-body::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.ant-table-body::-webkit-scrollbar-thumb {
+  background: rgba(144,146,152,.3);
+  border-radius: 5px;
+}
+.ant-table-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(144,146,152,.4);
+  border-radius: 5px;
+}
+/* Popconfirm */
+.ant-popconfirm {
+  z-index: 9999 !important;
+}
+/* Modal */
+.ant-modal-wrap {
+  z-index: 1001 !important;
+}
+/* form_editor form-item */
+#form_editor .ant-form-item {
+  margin-bottom: 16px;
+}
+/* label */
+#form_editor .ant-form-item-label > label {
+  color: #bcc8d4;
+}
+#form_editor .ant-form-item-label {
+  padding-left: 20px;
+  padding-right: 12px;
+  text-align: start;
+}
+/* control */
+#form_editor .ant-form-item-control {
+  padding-right: 20px;
+}
+/* Collapse */
+#form_editor .ant-collapse-content > .ant-collapse-content-box {
+  padding: 0px;
+}
+/* form_editor global */
+#form_editor .ant-input::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+#form_editor .ant-input::-webkit-scrollbar-thumb {
+  background: rgba(144,146,152,.3);
+  border-radius: 5px;
+}
+#form_editor .ant-input::-webkit-scrollbar-thumb:hover {
+  background: rgba(144,146,152,.4);
+  border-radius: 5px;
+}
+/* antv */
+.l7-control-logo.l7-control {
+  display: none;
+}
+
+.rotate-animate {
+  margin: 100px auto;
+  border:16px solid #f3f3f3;
+  border-radius:50%;
+  border-top:16px solid #409eff;
+  width:130px;
+  height:130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation:rotate 2s linear infinite;
+  font-size: 12px;
+}
+@keyframes rotate{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform:rotate(360deg);
+  }
+}
+
+/* 修改全局的拖拽样式 */
+.rCSwtyrwf .moveable-control {
+  width: 6px !important;
+  height: 6px !important;
+  margin-top: -3px !important;
+  margin-left: -3px !important;
+  border-color: #4af !important;
+}
+
+.react-contexify {
+  z-index: 99;
+}
+
+/* @import '~codemirror/lib/codemirror.css';
+@import '~codemirror/theme/material.css'; */

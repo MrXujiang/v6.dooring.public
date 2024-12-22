@@ -2,20 +2,16 @@ import React, { memo, useEffect } from 'react'
 import { Scene, PointLayer } from '@antv/l7'
 import { GaodeMap } from '@antv/l7-maps'
 
-import { DotIcon } from '@/utils/icon/Icons'
-
 import { StereoHistogramConfigType } from './schema'
 
 interface StereoHistogramComponentProps extends StereoHistogramConfigType {
-  isTpl: boolean
   id: string
 }
 
 const StereoHistogramComponent: React.FC<StereoHistogramComponentProps> = ({
-  isTpl, id, width, height,
+  id, width, height,
 }) => {
   useEffect(() => {
-    if (!isTpl) {
       const scene = new Scene({
         id: `stereoHistogram-${id}`,
         map: new GaodeMap({
@@ -63,12 +59,9 @@ const StereoHistogramComponent: React.FC<StereoHistogramComponentProps> = ({
             scene.addLayer(pointLayer)
           })
       })
-    }
   }, [])
 
-  return isTpl
-    ? <DotIcon />
-    : <div id={`stereoHistogram-${id}`} />
+  return <div id={`stereoHistogram-${id}`} />
 }
 
 export default memo(StereoHistogramComponent)

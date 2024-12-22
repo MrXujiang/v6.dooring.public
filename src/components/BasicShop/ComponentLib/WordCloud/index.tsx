@@ -2,13 +2,11 @@ import React, { memo, useEffect } from 'react'
 import DataSet from '@antv/data-set'
 import { Chart, registerShape, Util } from '@antv/g2'
 
-import { CloudIcon } from '@/utils/icon/Icons'
 import { fetchMapData } from '@/utils/req'
 
 import { WordCloudConfig } from './schema'
 
 interface WordCloudConfigType extends WordCloudConfig {
-  isTpl: boolean
   id: string
 }
 
@@ -43,7 +41,7 @@ registerShape('point', 'cloud', {
 })
 
 const WordCloud: React.FC<WordCloudConfigType> = memo(({
-  isTpl, id, width, height, data,
+  id, width, height, data,
   dataType, apiMethod, apiAddress,
   color,
 }) => {
@@ -101,17 +99,9 @@ const WordCloud: React.FC<WordCloudConfigType> = memo(({
   }
 
   useEffect(() => {
-    if (!isTpl) {
-      fetchMapData(dataType, data, apiMethod, apiAddress, renderCharts)
-    }
+    fetchMapData(dataType, data, apiMethod, apiAddress, renderCharts)
   }, [])
 
-  return (
-    <>
-      {isTpl
-        ? <CloudIcon />
-        : <div id={`wordCloud-${id}`} />}
-    </>
-  )
+  return <div id={`wordCloud-${id}`} />
 })
 export default WordCloud

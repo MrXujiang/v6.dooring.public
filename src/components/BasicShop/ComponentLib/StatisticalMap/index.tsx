@@ -2,18 +2,16 @@ import React, { memo, useEffect } from 'react'
 import DataSet from '@antv/data-set'
 import { Chart } from '@antv/g2'
 
-import { WorldIcon } from '@/utils/icon/Icons'
 import { fetchMapData } from '@/utils/req'
 
 import { StatisticalMapConfigType } from './schema'
 
 interface StatisticalMapComponentProps extends StatisticalMapConfigType {
-  isTpl: boolean
   id: string
 }
 
 const StatisticalMapComponent: React.FC<StatisticalMapComponentProps> = ({
-  isTpl, id, width, height,
+  id, width, height,
   toggle, legendPosition, legendLayout, legendShape,
   dataType, data, apiAddress, apiMethod,
   lineWidth, background, stroke, opacity,
@@ -129,14 +127,10 @@ const StatisticalMapComponent: React.FC<StatisticalMapComponentProps> = ({
   }
 
   useEffect(() => {
-    if (!isTpl) {
-      fetchMapData(dataType, data, apiMethod, apiAddress, renderCharts)
-    }
+    fetchMapData(dataType, data, apiMethod, apiAddress, renderCharts)
   }, [])
 
-  return isTpl
-    ? <WorldIcon />
-    : <div id={`statisticalMap-${id}`} />
+  return <div id={`statisticalMap-${id}`} />
 }
 
 export default memo(StatisticalMapComponent)
